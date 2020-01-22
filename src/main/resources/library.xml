@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.12.0.xsd">
+    <!-- Configure the database connection here -->
+    <jdbc>
+        <!-- Dummy configurations for generating the classes in a local setup; these settings should not match real,
+        production settings -->
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/security</url>
+        <user>security</user>
+        <password>abc123</password>
+    </jdbc>
+
+    <generator>
+        <name>org.jooq.codegen.JavaGenerator</name>
+        <database>
+            <name>org.jooq.meta.postgres.PostgresDatabase</name>
+            <includes>.*</includes>
+            <!-- Ignore Flyway tables -->
+            <excludes>FLYWAY_SCHEMA_HISTORY</excludes>
+            <inputSchema>public</inputSchema>
+            <outputSchemaToDefault>true</outputSchemaToDefault>
+        </database>
+        <generate>
+            <globalObjectReferences>false</globalObjectReferences>
+            <javaTimeTypes>true</javaTimeTypes>
+        </generate>
+        <target>
+            <packageName>com.hikarikun92.springsecurity.persistence.jooq</packageName>
+            <directory>src/main/java</directory>
+        </target>
+    </generator>
+</configuration>
